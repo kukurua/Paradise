@@ -320,6 +320,11 @@
 	var/disable_taipan = FALSE
 	var/disable_lavaland = FALSE
 
+	/// Whether demos are written, if not set demo SS never initializes
+	var/demos_enabled = FALSE
+	/// Whether demos should include TTS sounds (storage expensive)
+	var/demos_embed_tts = FALSE
+
 /datum/configuration/New()
 	for(var/T in subtypesof(/datum/game_mode))
 		var/datum/game_mode/M = T
@@ -917,6 +922,12 @@
 
 				if("disable_lavaland")
 					config.disable_lavaland = TRUE
+
+				if("demos_enabled")
+					config.demos_enabled = TRUE
+
+				if("demos_embed_tts")
+					config.demos_embed_tts = TRUE
 
 				else
 					log_config("Unknown setting in configuration: '[name]'")
